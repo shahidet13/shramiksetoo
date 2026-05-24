@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShramikSetu - Blue-Collar Marketplace</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        
+        @page {
+            size: A4;
+            margin: 15mm 12mm;
+            background-color: #f4f6f8;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #2d3748;
+            line-height: 1.5;
+            font-size: 10.5pt;
+        }
+
+        .header-banner {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0d9488 100%);
+            color: white;
+            padding: 25px 20px;
+            margin: -15mm -12mm 25px -12mm;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .header-banner h1 {
+            margin: 0;
+            font-size: 20pt;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header-banner p {
+            margin: 6px 0 0 0;
+            font-size: 11pt;
+            opacity: 0.9;
+        }
+
+        .lang-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 9pt;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: 14pt;
+            color: #1e3a8a;
+            border-left: 4px solid #0d9488;
+            padding-left: 10px;
+            margin: 25px 0 15px 0;
+            font-weight: 600;
+            page-break-after: avoid;
+        }
+
+        .grid-container {
+            display: table;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .grid-row {
+            display: table-row;
+        }
+
+        .grid-cell {
+            display: table-cell;
+            width: 50%;
+            padding: 0 10px;
+            vertical-align: top;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            page-break-inside: avoid;
+        }
+
+        .card-header {
+            border-bottom: 1px dashed #e2e8f0;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-size: 12pt;
+            font-weight: 600;
+            color: #1a202c;
+            margin: 0;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #f0fdf4;
+            color: #166534;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 9pt;
+            font-weight: 600;
+            margin-right: 5px;
+            margin-top: 5px;
+        }
+
+        .tag-blue {
+            background: #eff6ff;
+            color: #1e40af;
+        }
+
+        .tag-orange {
+            background: #fff7ed;
+            color: #9a3412;
+        }
+
+        .metric-container {
+            margin-top: 10px;
+        }
+
+        .metric-box {
+            display: inline-block;
+            width: 48%;
+            background: #f8fafc;
+            border: 1px solid #edf2f7;
+            border-radius: 6px;
+            padding: 8px;
+            text-align: center;
+            margin-right: 2%;
+        }
+
+        .metric-box:last-child {
+            margin-right: 0;
+        }
+
+        .metric-val {
+            font-size: 13pt;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .metric-lbl {
+            font-size: 8pt;
+            color: #64748b;
+            text-transform: uppercase;
+        }
+
+        .audio-placeholder {
+            background: #f1f5f9;
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 9pt;
+            color: #475569;
+            margin-top: 10px;
+            text-align: center;
+            border: 1px solid #cbd5e1;
+        }
+
+        .action-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: #0d9488;
+            color: white;
+            padding: 8px 0;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 10pt;
+            margin-top: 12px;
+            text-decoration: none;
+        }
+
+        .action-btn-secondary {
+            background: #1e3a8a;
+        }
+
+        .info-callout {
+            background: #f8fafc;
+            border-left: 4px solid #3b82f6;
+            padding: 12px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+            font-size: 9.5pt;
+        }
+
+        .form-table {
+            display: table;
+            width: 100%;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .form-row {
+            display: table-row;
+        }
+
+        .form-cell {
+            display: table-cell;
+            padding: 8px;
+            vertical-align: middle;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #4a5568;
+            width: 30%;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 10pt;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 9pt;
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-banner">
+        <h1>ShramikSetu (श्रमिकसेतु)</h1>
+        <p>India's High-Trust Single-Page Marketplace Connecting Skilled Labor & Contractors</p>
+        <div class="lang-badge">🌐 Available in: English, हिन्दी, தமிழ், తెలుగు, मराठी, বাংলা</div>
+    </div>
+
+    <div class="info-callout">
+        <strong>💡 Antigravity Zero-Leakage Architecture:</strong> To maximize trust and shield vulnerable laborers from predatory cuts, registration and profiles are 100% free for workers. Premium credits are billed exclusively to contractors (*thekedars*) unlocking instant hyper-local direct connections.
+    </div>
+
+    <div class="section-title">Verified Skilled Labor Profiles (Available Nearby)</div>
+    
+    <div class="grid-container">
+        <div class="grid-row">
+            <!-- Laborer 1 -->
+            <div class="grid-cell">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Ramesh Kumar (राजमिस्त्री / Mason)</div>
+                        <span class="tag">Verified Expert</span>
+                        <span class="tag tag-blue">Within 3.5 km</span>
+                    </div>
+                    <div><strong>Primary Skills:</strong> Brickwork, Plastering, Concrete Structuring</div>
+                    <div><strong>Expected Wage:</strong> <span style="color:#0d9488; font-weight:700;">₹750 / Day</span></div>
+                    
+                    <div class="metric-container">
+                        <div class="metric-box">
+                            <div class="metric-val">142</div>
+                            <div class="metric-lbl">Jobs Done</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-val">4.9 ★</div>
+                            <div class="metric-lbl">Rating</div>
+                        </div>
+                    </div>
+
+                    <div class="audio-placeholder">▶ Listen to Voice Profile (Hindi/Bhojpuri)</div>
+                    <a href="#" class="action-btn">Connect & Hire Instant</a>
+                </div>
+            </div>
+
+            <!-- Laborer 2 -->
+            <div class="grid-cell">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Satnam Singh (इलेक्ट्रीशियन / Electrician)</div>
+                        <span class="tag">Certified ITI</span>
+                        <span class="tag tag-blue">Within 5.0 km</span>
+                    </div>
+                    <div><strong>Primary Skills:</strong> Conduit Piping, DB Dressing, Industrial Wiring</div>
+                    <div><strong>Expected Wage:</strong> <span style="color:#0d9488; font-weight:700;">₹850 / Day</span></div>
+                    
+                    <div class="metric-container">
+                        <div class="metric-box">
+                            <div class="metric-val">89</div>
+                            <div class="metric-lbl">Jobs Done</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-val">4.7 ★</div>
+                            <div class="metric-lbl">Rating</div>
+                        </div>
+                    </div>
+
+                    <div class="audio-placeholder">▶ Listen to Voice Profile (Punjabi/Hindi)</div>
+                    <a href="#" class="action-btn">Connect & Hire Instant</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Active Contractor Job Requirements</div>
+
+    <div class="grid-container">
+        <div class="grid-row">
+            <!-- Job 1 -->
+            <div class="grid-cell">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Need 5 Shuttering Carpenters</div>
+                        <span class="tag tag-orange">Urgent</span>
+                        <span class="tag tag-blue">Noida Sec-62</span>
+                    </div>
+                    <div><strong>Duration:</strong> 15 Days Project</div>
+                    <div><strong>Offered Rate:</strong> ₹800 / Day (Daily UPI Payment)</div>
+                    <div><strong>Posted By:</strong> Verma Structural Projects (Verified Contractor)</div>
+                    
+                    <div class="metric-container">
+                        <div class="metric-box">
+                            <div class="metric-val">5 Days</div>
+                            <div class="metric-lbl">Est. Start Time</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-val">100%</div>
+                            <div class="metric-lbl">Payment Score</div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="action-btn action-btn-secondary">Apply for Work</a>
+                </div>
+            </div>
+
+            <!-- Job 2 -->
+            <div class="grid-cell">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Wall Painter Needed for Commercial Space</div>
+                        <span class="tag tag-orange">Immediate</span>
+                        <span class="tag tag-blue">Gurugram Phase-3</span>
+                    </div>
+                    <div><strong>Duration:</strong> 6 Days Project</div>
+                    <div><strong>Offered Rate:</strong> ₹700 / Day (Accommodation provided)</div>
+                    <div><strong>Posted By:</strong> Jagat Painting Contractors</div>
+                    
+                    <div class="metric-container">
+                        <div class="metric-box">
+                            <div class="metric-val">Tomorrow</div>
+                            <div class="metric-lbl">Est. Start Time</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-val">96%</div>
+                            <div class="metric-lbl">Payment Score</div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="action-btn action-btn-secondary">Apply for Work</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Instant Setup / Post Your Profile</div>
+    <div class="form-table">
+        <div class="form-row">
+            <div class="form-cell form-label">I am a:</div>
+            <div class="form-cell">
+                <input type="radio" id="role1" name="role" checked> <label style="margin-right:15px;" for="role1">Labourer (श्रमिक)</label>
+                <input type="radio" id="role2" name="role"> <label for="role2">Contractor (ठेकेदार)</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-cell form-label">Full Name / नाम:</div>
+            <div class="form-cell"><input type="text" class="form-input" placeholder="e.g. Rajesh Sharma"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-cell form-label">Skill / हुनर:</div>
+            <div class="form-cell"><input type="text" class="form-input" placeholder="e.g. Plumber, Mason, Painter, Helper"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-cell form-label">Daily Wage / दिहाड़ी (₹):</div>
+            <div class="form-cell"><input type="number" class="form-input" placeholder="e.g. 600"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-cell"></div>
+            <div class="form-cell">
+                <button type="submit" class="action-btn" style="border:none; cursor:pointer;">Go Live on Map 🚀</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        ShramikSetu App Ecosystem. Designed to build financial security for Indian skilled trades. Secure Escrow • Zero Hidden Charges • Native Audio Profiles.
+    </div>
+
+</body>
+</html>
